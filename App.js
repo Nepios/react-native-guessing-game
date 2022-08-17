@@ -6,6 +6,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import Colors from './constants/colors';
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
+import { StatusBar } from 'expo-status-bar';
 
 import GameOverScreen from './screens/GameOverScreen';
 
@@ -31,8 +32,6 @@ export default function App() {
   function gameOverHandler(numberOfRounds) {
     setGameIsOver(true);
     setGuessRounds(numberOfRounds);
-    console.log('number of rounds', numberOfRounds);
-    console.log('guess rounds', guessRounds);
   }
 
   function startNewGameHandler() {
@@ -53,12 +52,15 @@ export default function App() {
 
 
   return (
-    <LinearGradient colors={[Colors.primary700, Colors.accent500]} style={styles.rootScreen}>
-      <ImageBackground source={require('./assets/images/background.png')} resizeMode="cover" style={styles.rootScreen} imageStyle={styles.backgroundImage}>
-       <SafeAreaView style={styles.rootScreen}>{screen}</SafeAreaView>
- 
-      </ImageBackground>
-    </LinearGradient>
+    <>
+      <StatusBar style='light'/>
+      <LinearGradient colors={[Colors.primary700, Colors.accent500]} style={styles.rootScreen}>
+        <ImageBackground source={require('./assets/images/background.png')} resizeMode="cover" style={styles.rootScreen} imageStyle={styles.backgroundImage}>
+        <SafeAreaView style={styles.rootScreen}>{screen}</SafeAreaView>
+  
+        </ImageBackground>
+      </LinearGradient>
+    </>
   );
 }
 
